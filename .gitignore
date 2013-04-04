@@ -13,4 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+<<<<<<< HEAD
 .idea/*
+=======
+
+/.idea
+>>>>>>> 28a8d31d37417ab1941f0be696370ae0f972166f
