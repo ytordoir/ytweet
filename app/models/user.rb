@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   has_secure_password
-  has_many :microposts
+  has_many :microposts, dependent: :destroy
   validates_confirmation_of :password
 
 
