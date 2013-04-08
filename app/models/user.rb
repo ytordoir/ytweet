@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   has_secure_password
-  has_many :microposts
+  has_many :microposts, dependent: :destroy
   validates_confirmation_of :password
 
 
@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :password, presence: true, length: {minimum: 6}
   validates :password_confirmation, presence: true
+
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
 
   private
 
