@@ -6,12 +6,17 @@ class User < ActiveRecord::Base
 
   has_secure_password
   has_many :microposts, dependent: :destroy
+<<<<<<< HEAD
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
            class_name:  "Relationship",
            dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+=======
+  validates_confirmation_of :password
+
+>>>>>>> 46e06369fe494e2a14075571b85ce626d13e2ea4
 
   validates_confirmation_of :password
   validates :name, presence: true, length: {maximum: 50}
